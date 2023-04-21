@@ -1,8 +1,12 @@
 import React from "react";
 
-export const HomePage = () => {
+interface HomeProps {
+  login: () => void;
+}
+
+export const HomePage = ({ login }: HomeProps) => {
   return (
-    <div className="flex h-full">
+    <div className="flex min-h-screen">
       <div className="flex-[2] flex text-7xl font-bold text-center justify-center items-center">
         Board.
       </div>
@@ -11,10 +15,18 @@ export const HomePage = () => {
           <div className="font-bold text-4xl">Sign In</div>
           <div className="text-base">Sign into your account</div>
           <div className="flex justify-between gap-2">
-            <button className="flex-[1] rounded-md text-stone-500 p-2 bg-white">
+            <button
+              onClick={login}
+              className="flex-[1] flex items-center justify-evenly rounded-md text-stone-500 p-2 bg-white"
+            >
+              <img src="google-icon.svg" alt="icon" />
               Sign in with Google
             </button>
-            <button className="flex-[1] rounded-md text-stone-500 p-2 bg-white">
+            <button
+              onClick={login}
+              className="flex-[1] flex items-center justify-evenly rounded-md text-stone-500 p-2 bg-white"
+            >
+              <img src="apple.svg" alt="icon" />
               Sign in with Apple
             </button>
           </div>
@@ -32,7 +44,10 @@ export const HomePage = () => {
               defaultValue="12345678"
             />
             <div className="text-blue-500">Forgot password?</div>
-            <button className="rounded-lg bg-black text-white p-2">
+            <button
+              onClick={login}
+              className="rounded-lg bg-black text-white p-2"
+            >
               Sign In
             </button>
           </div>
