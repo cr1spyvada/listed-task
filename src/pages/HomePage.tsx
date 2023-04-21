@@ -52,7 +52,7 @@ export const HomePage = ({ login }: HomeProps) => {
             </button>
           </div>
           <div className="w-full text-center flex justify-center">
-            Don't have an account?{" "}
+            Don{"'"}t have an account?{" "}
             <div className="text-blue-300"> Register here</div>
           </div>
         </div>
