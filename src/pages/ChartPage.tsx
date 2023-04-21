@@ -97,7 +97,7 @@ export const ChartPage = () => {
       ],
     },
   ];
-  const options: ApexOptions = {
+  const optionsLineGraph: ApexOptions = {
     colors: ["#E9A0A0", "#9BDD7C"],
     fill: {
       pattern: {
@@ -133,12 +133,29 @@ export const ChartPage = () => {
       overwriteCategories: ["", "Week 1", "Week 2", "Week 3", "Week 4", ""],
     },
   };
+  const optionsBarGraph: ApexOptions = {
+    labels: ["Basic Trees", "Super Hoodies", "Custom User Pants"],
+    colors: ["#98D89E", "#E9A0A0", "#F6DC7D"],
+    legend: {
+      position: "right",
+      fontSize: "24px",
+    },
+    dataLabels: {
+      enabled: false,
+    },
+    plotOptions: {
+      pie: {
+        startAngle: 180,
+        endAngle: 540,
+      },
+    },
+  };
   return (
     <div className="flex bg-stone-100 h-full p-1 lg:p-5">
       <SideBar />
-      <div className="px-6 py-4 w-full">
+      <div className="px-6 py-2 w-full flex flex-col gap-6">
         <Navbar />
-        <div className="flex gap-x-4 my-4">
+        <div className="flex gap-x-4">
           {cardArray.map((item, idx) => (
             <div
               key={idx}
@@ -157,13 +174,60 @@ export const ChartPage = () => {
           ))}
         </div>
         {typeof window !== "undefined" && (
-          <Chart
-            options={options}
-            series={chartData}
-            type="line"
-            height={350}
-          />
+          <div className="rounded-xl bg-white p-6">
+            <Chart
+              options={optionsLineGraph}
+              series={chartData}
+              type="line"
+              height={250}
+            />
+          </div>
         )}
+        <div className="flex gap-8">
+          <div className="flex-[1] grid grid-cols-2 p-8 bg-white rounded-xl">
+            <div className="text-black font-bold text-xl">Top Products</div>
+            <div className="text-gray-300 text-right">May - June 2021</div>
+            {typeof window !== "undefined" && (
+              <div className="col-span-2">
+                <Chart
+                  type="pie"
+                  series={[55, 14, 31]}
+                  options={optionsBarGraph}
+                />
+              </div>
+            )}
+          </div>
+          <div className="flex-[1] grid grid-cols-2 gap-y-2 bg-white rounded-xl p-8">
+            <div className="text-black font-bold text-xl p-2">Top Schedule</div>
+            <div className="text-gray-300 text-right">See All</div>
+            <div className="flex flex-col col-span-2">
+              <div className="flex text-black">
+                <div className="h-full p-[2px] bg-green-300" />
+                <div className="px-2 ">
+                  <div className="font-semibold text-lg">
+                    Meeting with Suppliers from Kuta Bill
+                  </div>
+                  <div className="text-gray-400">14.00- 15.00</div>
+                  <div className="text-gray-400">
+                    at Sunset Road, Kuta, Bali
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col col-span-2">
+              <div className="flex text-black">
+                <div className="h-full p-[2px] bg-purple-300" />
+                <div className="px-2 ">
+                  <div className="font-semibold text-lg">
+                    Check operation at Giga Factory 1
+                  </div>
+                  <div className="text-gray-400">18.00- 20.00</div>
+                  <div className="text-gray-400">at Central Jakarta</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
