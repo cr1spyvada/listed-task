@@ -45,8 +45,27 @@ export const ChartPage = () => {
   const cardArray = [
     {
       icon: "revenue_icon.svg",
+      bg: "bg-green-100",
       title: "Total Revenues",
       price: "$2,129,430",
+    },
+    {
+      icon: "total_transaction_icon.svg",
+      bg: "bg-yellow-100",
+      title: "Total Transactions",
+      price: "1,520",
+    },
+    {
+      icon: "total_likes_icon.svg",
+      bg: "bg-red-100",
+      title: "Total Likes",
+      price: "9,271",
+    },
+    {
+      icon: "total_users_icon.svg",
+      bg: "bg-blue-100",
+      title: "Total Users",
+      price: "892",
     },
   ];
   return (
@@ -54,19 +73,19 @@ export const ChartPage = () => {
       <SideBar />
       <div className="px-6 py-4 w-full">
         <Navbar />
-        <div className="flex gap-x-4">
+        <div className="flex gap-x-4 my-4">
           {cardArray.map((item, idx) => (
             <div
               key={idx}
-              className="rounded-xl bg-green-300 text-black p-4 grid grid-cols-2 grid-rows-3"
+              className={`flex-1 rounded-xl ${item?.bg} text-black p-4 grid grid-cols-2 grid-rows-3`}
             >
               <img
-                className="col-span-1/2 col-start-2 ml-auto"
+                className="col-span-1/2 col-start-2 ml-auto "
                 src={item?.icon}
                 alt="icon"
               />
-              <div className="col-start-1text-lg">{item?.title}</div>
-              <div className="col-start-1 text-3xl font-semibold">
+              <div className="col-span-2 text-lg">{item?.title}</div>
+              <div className="col-span-2 text-3xl font-semibold">
                 {item?.price}
               </div>
             </div>
