@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { HomePage } from "./HomePage";
-import { ChartPage } from "./ChartPage";
+import { HomePage } from "../components/HomePage";
+import { ChartPage } from "../components/ChartPage";
 import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
