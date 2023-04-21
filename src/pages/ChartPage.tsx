@@ -14,7 +14,7 @@ const SideBar = () => {
     { icon: "setting_icon.svg", title: "Settings" },
   ];
   return (
-    <div className="w-1/6 h-full lg:px-6 py-12 bg-black text-white rounded-xl hidden justify-between lg:flex flex-col mx-4">
+    <div className="w-1/6 h-screen mb-2 sticky lg:px-6 py-12 bg-black text-white rounded-xl hidden justify-between lg:flex flex-col mx-4">
       <div className="flex-[1] text-3xl font-bold">Board.</div>
       <div className="flex-[8] flex flex-col gap-y-4 py-4 justify-start">
         {NavbarArr.map((item, idx) => (
