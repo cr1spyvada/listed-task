@@ -42,11 +42,36 @@ const Navbar = () => {
   );
 };
 export const ChartPage = () => {
+  const cardArray = [
+    {
+      icon: "revenue_icon.svg",
+      title: "Total Revenues",
+      price: "$2,129,430",
+    },
+  ];
   return (
     <div className="flex bg-stone-100 h-full p-1 lg:p-5">
       <SideBar />
       <div className="px-6 py-4 w-full">
         <Navbar />
+        <div className="flex gap-x-4">
+          {cardArray.map((item, idx) => (
+            <div
+              key={idx}
+              className="rounded-xl bg-green-300 text-black p-4 grid grid-cols-2 grid-rows-3"
+            >
+              <img
+                className="col-span-1/2 col-start-2 ml-auto"
+                src={item?.icon}
+                alt="icon"
+              />
+              <div className="col-start-1text-lg">{item?.title}</div>
+              <div className="col-start-1 text-3xl font-semibold">
+                {item?.price}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
