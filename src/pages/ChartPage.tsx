@@ -1,4 +1,9 @@
+import { ApexOptions } from "apexcharts";
 import React from "react";
+// import Chart from "react-apexcharts";
+import dynamic from "next/dynamic";
+
+const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const SideBar = () => {
   const NavbarArr = [
@@ -68,6 +73,66 @@ export const ChartPage = () => {
       price: "892",
     },
   ];
+  const chartData = [
+    {
+      name: "Guest",
+      data: [
+        [0, 200],
+        [20, 390],
+        [40, 200],
+        [60, 300],
+        [80, 210],
+        [100, 420],
+      ],
+    },
+    {
+      name: "User",
+      data: [
+        [0, 100],
+        [20, 405],
+        [40, 150],
+        [60, 450],
+        [80, 190],
+        [100, 250],
+      ],
+    },
+  ];
+  const options: ApexOptions = {
+    colors: ["#E9A0A0", "#9BDD7C"],
+    fill: {
+      pattern: {
+        strokeWidth: 1,
+      },
+    },
+    title: {
+      text: "Activities",
+      style: {
+        fontSize: "24px",
+        fontWeight: "bold",
+        color: "#000000",
+      },
+    },
+    chart: { toolbar: { show: false } },
+    stroke: {
+      curve: "smooth",
+    },
+    tooltip: {
+      x: {
+        formatter: function (val) {
+          return val.toFixed(1);
+        },
+      },
+    },
+    legend: {
+      position: "top",
+      horizontalAlign: "right",
+    },
+    xaxis: {
+      type: "category",
+      // categories: [20, 40, 60, 80],
+      overwriteCategories: ["", "Week 1", "Week 2", "Week 3", "Week 4", ""],
+    },
+  };
   return (
     <div className="flex bg-stone-100 h-full p-1 lg:p-5">
       <SideBar />
@@ -91,6 +156,14 @@ export const ChartPage = () => {
             </div>
           ))}
         </div>
+        {typeof window !== "undefined" && (
+          <Chart
+            options={options}
+            series={chartData}
+            type="line"
+            height={350}
+          />
+        )}
       </div>
     </div>
   );
